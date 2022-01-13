@@ -36,3 +36,331 @@
     transform: rotate(360deg);
   }
 }
+
+/* My classes */
+.d-flex{
+  display: flex;
+}
+.column{
+  flex-direction: column;
+}
+.column-reverse{
+  flex-direction: column-reverse;
+}
+.f-wrap{
+  flex-wrap: wrap;
+}
+.flex1{
+  flex: 1;
+}
+.flex2{
+  flex: 2;
+}
+.just-center{
+  justify-content: center;
+}
+.just-between{
+  justify-content: space-between;
+}
+.just-evenly{
+  justify-content: space-evenly;
+}
+.just-start{
+  justify-content: start;
+}
+.just-end{
+  justify-content: end;
+}
+.ali-center{
+  align-items: center;
+}
+.ali-start{
+  align-content: flex-start;
+}
+.d-none{
+  display: none;
+}
+.bg-blue{
+  background-color: rgb(105, 186, 212);
+}
+.bg-rose{
+  background-color: rgb(184, 88, 88);
+}
+
+/* ******* Classes, Elements ******* */
+
+.card{
+  width: 200px;
+  height: 320px;
+  border: 1px solid blue;
+  margin: 10px;
+  border-radius: 5px;
+  background-color: rgb(73, 154, 224);
+}
+.card2{
+  width: 90%;
+  height: 200px;
+  border: 1px solid blue;
+  margin: 10px;
+  border-radius: 5px;
+  background-color: rgb(73, 154, 224);
+}
+/* img {
+  margin: 10px;
+  border-radius: 50%;
+} */
+.card img, .card2 img{
+  width: 80%;
+  max-height: 162px;
+  margin: 10px;
+  object-fit: contain;
+  border-radius: 5px;
+  border:1px solid blue;
+}
+.card h3{
+  margin: 5px 0px;
+ 
+}
+.card2 img{
+  width:162px;
+}
+.card2 h3{
+  margin-left: 50px;
+}
+.userInfo{
+  width: 100%;
+}
+button{
+  padding:10px;
+  margin:20px;
+  width: 120px;
+  cursor: pointer;
+}
+.betBtn{
+  border-radius: 5px;
+  border:1px solid blue;
+  padding:10px;
+  margin: 50px;
+  cursor: pointer;
+  background-color: lightgray;
+
+}
+.quiz{
+  margin: 10px 50px;
+  border-radius: 20px;
+}
+.quiz2{
+  padding: 10px;
+  border-radius: 40px;
+  box-sizing: border-box;
+  width: 160px;
+}
+/* ****Christmas ***** */
+.treeplace{
+  position:relative;
+}
+.treeplace img{
+  width: 40%;
+  height: 70%;
+}
+.imgChristmas{
+  position: relative;
+  bottom: -100px;
+  right: -140px;
+}
+.toys{
+  max-width:30px;
+  min-width: 30px;
+  max-height: 30px;
+  min-height: 30px;
+  /* background-image: url(https://i.pinimg.com/originals/ae/f3/23/aef32327be7e2ea3975869fa118ff21c.png); */
+  background-size: contain;
+  background-position: center;
+  z-index: 1;
+  position: relative;
+  
+}
+.one, .one0{
+  /* background-image: url(https://i.pinimg.com/originals/ae/f3/23/aef32327be7e2ea3975869fa118ff21c.png); */
+  bottom:0px;
+  right: -475px;
+}
+.two, .one1{
+  /* background-image: url(https://findicons.com/files/icons/2489/colorful_baubles/256/12.png); */
+  bottom:170px;
+  right: -420px;
+}
+.three, .one2{
+  /* background-image: url(https://images.vexels.com/media/users/3/136636/isolated/lists/f5482558f2cc71d0a72dd6557ee2d03f-purple-christmas-bauble.png); */
+  bottom:170px;
+  right: -450px;
+}
+.four, .one3{
+  /* background-image: url(https://www.freeiconspng.com/uploads/pimk-baubles-png-6.png); */
+  bottom:160px;
+  right: -400px;
+}
+.five, .one4{
+  /* background-image: url(https://findicons.com/files/icons/2489/colorful_baubles/256/11.png); */
+  bottom:170px;
+  right: -445px;
+}
+.six, .one5{
+  /* background-image: url(https://findicons.com/files/icons/2489/colorful_baubles/256/10.png); */
+  bottom:160px;
+  right: -400px;
+}
+input{
+  margin-left: 20px;
+  width: 100px;
+}
+
+.gifts{
+  max-width:40px;
+  min-width: 40px;
+  max-height: 40px;
+  min-height: 40px;
+  border-radius: 5px;
+  /* background-image: url(https://www.cosslodkiego.com.pl/pol_pl_Gift-Pack-White-Red-3760_3.jpg); */
+  background-size: contain;
+  background-position: center;
+  z-index: 1;
+  position: absolute;
+  
+}
+.on0{
+  bottom: 0px;
+  right: 200px;
+}
+.on1{
+  bottom: 15px;
+  right: 120px;
+}
+.on2{
+  bottom: 20px;
+  right: 250px;
+}
+.on3{
+  bottom: 25px;
+  right: 180px;
+}
+/* ******** Chat */
+.color{
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 1px solid blue;
+  margin: 5px;
+  cursor: pointer;
+
+}
+.chatfield{
+  text-align: left;
+  font-size: 20px;
+
+}
+
+/* *** Cards */
+.cardz{
+  width: 100px;
+  height: 138px;
+  background-color: white;
+  border-radius: 5px;
+  margin: 10px;
+  background-image: url("https://deckofcardsapi.com/static/img/2S.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  cursor: pointer;
+
+}
+
+.cardz:hover{
+  transform: scale(1.05)
+}
+/* *** User profile */
+.profile img{
+  border-radius: 50%;
+  margin-bottom: 20px;
+}
+.star{
+  font-size: 26px;
+}
+.inpt{
+  margin: 5px;
+  size: 1;
+  width:40px;
+}
+.inputDiv {
+  text-align: start;
+}
+.reviewContent{
+  text-align: start;
+  padding:5px 0;
+  background-color: beige;
+  border-radius: 10px;
+  margin:5px 0;
+  overflow: auto;
+}
+.reviewContent h3, .reviewContent p{
+  margin: 2px;
+}
+textarea{
+  resize: none;
+}
+.sticky{
+  position: sticky;
+  top: 0px;
+  background-color: rgb(245, 235, 235);
+}
+
+/* *** React Route Pradzia */
+.cardigan{
+  width: 100px;
+  height: 138px;
+  background-color: white;
+  border-radius: 5px;
+  margin: 10px;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  cursor: pointer;
+
+}
+/* **** Posts from sever ***** */
+.userName{
+  cursor: pointer;
+}
+.userImg{
+  width: 80%;
+  min-width: 80%;
+  max-height: 162px;
+  margin: 10px;
+  object-fit: contain;
+  border-radius: 5px;
+  border:1px solid blue;
+  
+}
+.userImgPointer{
+  cursor: pointer;
+}
+.imgOneUser{
+  max-height: 600px;
+  border: none;
+}
+
+
+/* **** Padding, Margin */
+.pl-10{
+  padding-left: 10px;
+}
+.pr-20{
+  padding-right: 20px;
+}
+.pv-20{
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+.pt-20{
+  padding-top: 20px;
+}
