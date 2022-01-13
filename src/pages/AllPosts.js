@@ -1,10 +1,10 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom';
 
-function AllPosts({allposts, getUserPosts}) {
+function AllPosts({allposts, getUserPosts, currentUser , editPost}) {
     const divStyle = {
         width: "200px",
-        height: "300px",
+        // height: "300px",
         // maxHeight: "300px",
         border: "1px solid blue",
         margin: "10px",
@@ -40,6 +40,7 @@ function AllPosts({allposts, getUserPosts}) {
                    <img className="userImg" src={x.image} alt='paveiksliukas кирдык'/>
                    <h5>{x.title}</h5>
                    <h5>{x.id}</h5>
+                   {currentUser===x.username ? <button onClick={()=>editPost()}>Edit Post</button> : null}
                 </div>
              
             )}
