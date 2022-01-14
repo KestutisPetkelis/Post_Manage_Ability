@@ -1,7 +1,8 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
 
-function AllPosts({allposts, getUserPosts, currentUser }) {
+function AllPosts({allposts, getUserPosts, currentUser, getAllPosts }) {
     const divStyle = {
         width: "200px",
         // height: "300px",
@@ -27,8 +28,9 @@ function AllPosts({allposts, getUserPosts, currentUser }) {
         navigation(`/editpost/${arg}`)
     }
 
-
-
+    useEffect(() => {
+        getAllPosts()
+    }, [])
 
     return (
         
