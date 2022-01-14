@@ -11,6 +11,9 @@ import AllPosts from './pages/AllPosts';
 import UserPosts from './pages/UserPosts';
 import SinglePost from './pages/SinglePost';
 
+import CreatePost from './pages/CreatePost';
+import EditPost from './pages/EditPost';
+
 import Modal1 from './modals/Modal1';
 import Modal2 from './modals/Modal2';
 
@@ -44,17 +47,31 @@ function App() {
     password:useRef(),
     password2:useRef()
   }
-  const user = {
+  const user = {      // kintamasis darbui su vartotojo sukurimu ir registracija
     name: "",
     passwordOne:"",
     passwordTwo:""
   }
 
-  const login=()=>{
+  const postInputs ={
+    title:useRef(),
+    image:useRef(),
+    description:useRef()
+  }
+
+  const postCreateEdit={ // kintamasis darbui su postu sukurimu ir redagavimu
+    title:"",
+    image:"",
+    description:""
+
+  }
+
+  const login=()=>{     // login modalo uzkrovimo funkcija
     setShowModal({...showModal, modal2: true})
     console.log("login")
   }
-  const loginToServer=()=>{
+
+  const loginToServer=()=>{         // prisijungimo prie serverio funkcija
     const user1 = {
     name: inputs.name.current.value,
     password: inputs.password.current.value
@@ -88,17 +105,18 @@ function App() {
     console.log("Login", user1.name)
   }
 
-  const register =()=>{
+  const register =()=>{   // regidtracijos modalo uzkrovimo funkcija
     setShowModal({...showModal, modal1: true})
     console.log ("Register")
   }
-  const closeModal =()=>{
+
+  const closeModal =()=>{       // modalu uzdarymo funcija
     setShowModal({...showModal, modal1: false, modal2:false})
     console.log("Close modal")
   }
 
 
-  const regToServer =(inputs)=>{
+  const regToServer =(inputs)=>{          // registracijos i serveri funkcija
     user.name=inputs.name.current.value
     user.passwordOne=inputs.password.current.value
     user.passwordTwo=inputs.password2.current.value
@@ -128,11 +146,10 @@ function App() {
 
     })
     console.log("inputs", user)
-    // closeModal()
     console.log("It just has tried to register")
   }
  
-  const logout =()=>{
+  const logout =()=>{   // Logout funkcija
     setSecretKey("")
     setCurrentUser("")
   }
@@ -160,23 +177,127 @@ function App() {
     setPostOne(result)
   }
 
-  const editPost = () =>{
-    console.log("Edit post")
+
+  const createPost = (postInputs) =>{   // posto sukurimo funkcija
+    console.log("createPost", postInputs, secretKey)
+    const post={
+      secretKey: secretKey,
+      title: postInputs.title.current.value,
+      image: postInputs.image.current.value,
+      description: postInputs.description.current.value
+    }
+
+    const options = {                           // POST standartine dalis
+      method: "POST",
+      headers: {
+          "content-type":"application/json"
+      },
+      body: JSON.stringify(post)              // per cia perduodam duomenis
+    }
+    
+    fetch("http://167.99.138.67:1111/createpost", options)       // fetch POST
+    .then(res => res.json())
+    .then(data => {
+    console.log(data, data.success)
+      if(data.success){
+        alert(data.message)
+        postInputs.title.current.value=""
+        postInputs.image.current.value=""
+        postInputs.description.current.value=""
+      }else{
+        alert(data.message)
+       
+      }
+      getAllPosts()
+    })
+
   }
 
 
-  useEffect(() => {                   // viena karta imam duomenis is serverio
+
+  const editPost = (postInputs, postId) =>{   // posto redagavimo
+    
+    const post={
+      secretKey: secretKey,
+      title: postInputs.title.current.value,
+      image: postInputs.image.current.value,
+      description: postInputs.description.current.value,
+      id: postId
+    }
+
+    const options = {                           // POST standartine dalis
+      method: "POST",
+      headers: {
+          "content-type":"application/json"
+      },
+      body: JSON.stringify(post)              // per cia perduodam duomenis
+    }
+    
+    fetch("http://167.99.138.67:1111/updatepost", options)       // fetch POST
+    .then(res => res.json())
+    .then(data => {
+    console.log(data, data.success)
+      if(data.success){
+        alert(data.message)
+        // postInputs.title.current.value=""
+        // postInputs.image.current.value=""
+        // postInputs.description.current.value=""
+      }else{
+        alert(data.message)
+       
+      }
+      getAllPosts()
+      console.log("naujai atsisiuntem postu Masyva")
+    })
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    console.log("Edit post", postInputs, postId)
+  }
+
+  const getAllPosts = ()=>{
     fetch(`http://167.99.138.67:1111/getallposts`)
              .then(res => res.json())
              .then(data => {
               console.log("Duomenys",data.data);
  
              setAllPost(data.data)
-             
+             console.log ("All correct")
              }) ;
+ 
+  }
+
+
+
+
+
+
+
+
+  useEffect(() => {                   // viena karta imam duomenis is serverio
+    getAllPosts()
+    
+    // fetch(`http://167.99.138.67:1111/getallposts`)
+    //          .then(res => res.json())
+    //          .then(data => {
+    //           console.log("Duomenys",data.data);
+ 
+    //          setAllPost(data.data)
+             
+    //          }) ;
             
    // WILL BE CALLED ONE TIME WHEN COMPONENT IS RENDERED
  }, [])
+
+
+
+
 
   return (
     <div style={divStyle} className="App " >
@@ -186,14 +307,16 @@ function App() {
         <div className="sticky pv-20"> 
             {secretKey==="" ? 
             <LoginHeader login={login} register={register} showModal={showModal}/>: 
-            <LogoutHeader logout={logout} currentUser={currentUser}/>}
+            <LogoutHeader logout={logout} currentUser={currentUser} />}
         </div>
         {showModal.modal1 ? <Modal1 regToServer={regToServer} closeModal={closeModal} inputs={inputs} showModal={showModal}/> : null}
         {showModal.modal2 ? <Modal2  loginToServer={loginToServer} closeModal={closeModal} inputs={inputs} showModal={showModal}/> : null}
         <Routes>
-          <Route path="/allposts" element={<AllPosts allposts={allPost} getUserPosts={getUserPosts} currentUser={currentUser} editPost={editPost}/> }></Route>
+          <Route path="/allposts" element={<AllPosts allposts={allPost} getUserPosts={getUserPosts} currentUser={currentUser} editPost={editPost} getAllPosts={getAllPosts}/> }></Route>
           <Route path="/allposts/:userName" element={<UserPosts userPosts={oneUserPosts} getOnePost={getOnePost}/>} ></Route>
           <Route path="/allposts/:userName/:postId" element={<SinglePost allposts={allPost} postone={postOne}/>} ></Route>
+          <Route path="/createpost" element={<CreatePost createPost={createPost} postInputs={postInputs}/>}></Route>
+          <Route path="/editpost/:postId" element={<EditPost editPost={editPost} postInputs={postInputs} allposts={allPost}/>}></Route>
         </Routes>
      
       </BrowserRouter>

@@ -1,7 +1,7 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom';
 
-function AllPosts({allposts, getUserPosts, currentUser , editPost}) {
+function AllPosts({allposts, getUserPosts, currentUser }) {
     const divStyle = {
         width: "200px",
         // height: "300px",
@@ -23,6 +23,13 @@ function AllPosts({allposts, getUserPosts, currentUser , editPost}) {
                                     // todel gaunasi "/allposts/users/(arg)"
     }
     
+    const gotoEdit = (arg)=>{
+        navigation(`/editpost/${arg}`)
+    }
+
+
+
+
     return (
         
          <div  >
@@ -40,7 +47,7 @@ function AllPosts({allposts, getUserPosts, currentUser , editPost}) {
                    <img className="userImg" src={x.image} alt='paveiksliukas кирдык'/>
                    <h5>{x.title}</h5>
                    <h5>{x.id}</h5>
-                   {currentUser===x.username ? <button onClick={()=>editPost()}>Edit Post</button> : null}
+                   {currentUser===x.username ? <button onClick={()=>{gotoEdit(x.id)}}>Edit Post</button> : null}
                 </div>
              
             )}

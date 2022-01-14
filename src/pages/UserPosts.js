@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 function UserPosts({userPosts, getOnePost}) {
     const divStyle = {
         width: "200px",
-        height: "300px",
+        // height: "300px",
         maxHeight: "620px",
         border: "1px solid blue",
         margin: "10px",

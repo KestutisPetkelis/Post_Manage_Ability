@@ -13,7 +13,7 @@ function SinglePost({ postone}) {
         paddingRight: "21px",
         backgroundColor: "aliceblue"
        
-      };
+    };
 
     const {postId} = useParams()
     console.log("Vienas postas", postone, postId)
