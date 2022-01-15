@@ -14,9 +14,9 @@ const Micromodal = () => {
         padding: "10px",
         overflow: "auto", 
         color: "white", 
-        // position: "relative",
-        // top: "10px",
-        // left: "10px"
+        position: "absolute",
+        top: "0px",
+        left: "0px",
         zIndex: "1"
         
     };

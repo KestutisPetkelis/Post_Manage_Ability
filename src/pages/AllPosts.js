@@ -44,7 +44,7 @@ function AllPosts({allposts, getUserPosts, currentUser, getAllPosts }) {
             <div className="d-flex f-wrap">
             
                 {allposts.map((x,index) =>
-                    <div className="pl-10 singlepost"
+                    <div className="pl-10 singlepost2"
                         style={divStyle} 
                         key={index} 
                     >
@@ -53,10 +53,11 @@ function AllPosts({allposts, getUserPosts, currentUser, getAllPosts }) {
                     <h3 className='userName'onClick={()=>{nav(x.username); getUserPosts(x.username)}}>{x.username}</h3> 
                     <img className="userImg" src={x.image} alt='paveiksliukas кирдык'/>
                     <h5>{x.title}</h5>
-                    <h5 onMouseOver={()=>setMicro(true)} onMouseOut={()=>setMicro(false)}>{x.id}
-                    {micro ? <Micromodal /> : null}
-                    </h5> 
-                    {/* {micro ? <Micromodal /> : null} */}
+                    <div className='singlepost'>
+                        <h5 onMouseOver={()=>setMicro(true)} onMouseOut={()=>setMicro(false)}>{x.id}</h5> 
+                        {micro ? <Micromodal /> : null}
+                    </div>
+                    
                     {currentUser===x.username ? <button onClick={()=>{gotoEdit(x.id)}}>Edit Post</button> : null}
                     </div>
                     

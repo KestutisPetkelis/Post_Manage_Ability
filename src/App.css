@@ -143,6 +143,9 @@ input{
 .singlepost {
   position:relative;
 }
+.singlepost2{
+  overflow-y: hidden;
+}
 .userName{
   cursor: pointer;
 }
