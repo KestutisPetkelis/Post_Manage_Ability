@@ -121,6 +121,12 @@ button{
   right: -145px;
   top: 10px;
 }
+.micro{
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  z-index: 1;
+}
 input{
   margin-bottom: 15px;
 }
@@ -134,9 +140,13 @@ input{
 }
 
 /* **** Posts from sever ***** */
+.singlepost {
+  position:relative;
+}
 .userName{
   cursor: pointer;
 }
+
 .userImg{
   width: 80%;
   min-width: 80%;
