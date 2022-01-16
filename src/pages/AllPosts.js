@@ -5,7 +5,7 @@ import { useState } from 'react';
 
 import Micromodal from '../modals/Micromodal';
 
-function AllPosts({allposts, getUserPosts, currentUser, getAllPosts }) {
+function AllPosts({allposts, getUserPosts, currentUser, getAllPosts}) {
     const divStyle = {
         width: "200px",
         // height: "300px",
@@ -15,13 +15,14 @@ function AllPosts({allposts, getUserPosts, currentUser, getAllPosts }) {
         // marginBottom: "10px",
         backgroundColor: "aliceblue",
         padding: "10px",
-        overflow: "auto"
+        // overflow: "auto"
         
     };
 
     const navigation = useNavigate()
 
-    const [micro, setMicro] = useState(false)
+    const [microIndex, setMicroIndex] = useState(null) // kintamasis, kad rodytu mikro modala po 1
+    const [microInfo, setMicroInfo] = useState("")
 
     function nav(arg){
         navigation(`${arg}`)  // pridedam nauja kelia <UserPosts/> komponentui
@@ -32,6 +33,14 @@ function AllPosts({allposts, getUserPosts, currentUser, getAllPosts }) {
     const gotoEdit = (arg)=>{
         navigation(`/editpost/${arg}`)
     }
+
+    const getMicroInfo =(arg)=>{
+        const a = allposts.find(x => x.id===arg)
+        setMicroInfo(a.id)
+        console.log(arg,"a",a.id)
+    }
+
+
 
     useEffect(() => {
         getAllPosts()
@@ -54,8 +63,8 @@ function AllPosts({allposts, getUserPosts, currentUser, getAllPosts }) {
                     <img className="userImg" src={x.image} alt='paveiksliukas кирдык'/>
                     <h5>{x.title}</h5>
                     <div className='singlepost'>
-                        <h5 onMouseOver={()=>setMicro(true)} onMouseOut={()=>setMicro(false)}>{x.id}</h5> 
-                        {micro ? <Micromodal /> : null}
+                        <h5 onMouseOver={()=>{setMicroIndex(index); getMicroInfo(x.id)}} onMouseOut={()=>setMicroIndex(null)}>{x.id}</h5> 
+                        {microIndex===index ? <Micromodal microInfo={microInfo}/> : null}
                     </div>
                     
                     {currentUser===x.username ? <button onClick={()=>{gotoEdit(x.id)}}>Edit Post</button> : null}

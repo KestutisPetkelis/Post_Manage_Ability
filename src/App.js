@@ -280,20 +280,20 @@ function App() {
 
 
 
-//   useEffect(() => {                   // viena karta imam duomenis is serverio
-//     getAllPosts()
-    
-//     // fetch(`http://167.99.138.67:1111/getallposts`)
-//     //          .then(res => res.json())
-//     //          .then(data => {
-//     //           console.log("Duomenys",data.data);
- 
-//     //          setAllPost(data.data)
-             
-//     //          }) ;
-            
-//    // WILL BE CALLED ONE TIME WHEN COMPONENT IS RENDERED
-//  }, [])
+  //   useEffect(() => {                   // viena karta imam duomenis is serverio
+  //     getAllPosts()
+      
+  //     // fetch(`http://167.99.138.67:1111/getallposts`)
+  //     //          .then(res => res.json())
+  //     //          .then(data => {
+  //     //           console.log("Duomenys",data.data);
+  
+  //     //          setAllPost(data.data)
+              
+  //     //          }) ;
+              
+  //    // WILL BE CALLED ONE TIME WHEN COMPONENT IS RENDERED
+  //  }, [])
 
 
 

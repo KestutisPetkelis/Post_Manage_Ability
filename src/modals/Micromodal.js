@@ -1,19 +1,20 @@
 import React from 'react'
+import { useState } from 'react';
 
-const Micromodal = () => {
+const Micromodal = ({ microInfo}) => {
     const divStyle = {
         minWidth: "20px",
-        maxWidth: "60px",
+        // maxWidth: "60px",
         minHeight: "20px",
         // maxHeight: "300px",
         border: "1px solid blue",
         margin: "10px",
         borderRadius: "5px",
         // marginBottom: "10px",
-        backgroundColor: "blue",
-        padding: "10px",
+        backgroundColor: "white",
+        padding: "5px 10px",
         overflow: "auto", 
-        color: "white", 
+        color: "blue", 
         position: "absolute",
         top: "0px",
         left: "0px",
@@ -21,10 +22,9 @@ const Micromodal = () => {
         
     };
 
-
     return (
         <div style={divStyle} className='micro'>
-            Micro
+            <h5>{microInfo}</h5>
         </div>
     )
 }
